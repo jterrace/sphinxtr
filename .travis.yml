@@ -5,6 +5,7 @@ python:
   - 2.7
 
 before_install:
+ - sudo apt-get remove chromium firefox mongodb-10gen
  - sudo apt-get install texlive-base
 
 install:
