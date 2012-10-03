@@ -6,7 +6,9 @@ python:
 
 before_install:
  - sudo apt-get remove chromium firefox mongodb-10gen
- - sudo apt-get install texlive-latex-base texlive-latex-recommended
+ - sudo apt-add-repository ppa:texlive-backports/ppa
+ - sudo apt-get update
+ - sudo apt-get install texlive
 
 install:
   - "pip install -r requirements.txt --use-mirrors"
