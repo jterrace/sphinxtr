@@ -6,9 +6,10 @@ python:
 
 before_install:
  - sudo apt-get remove chromium firefox mongodb-10gen
- - sudo apt-add-repository -y ppa:texlive-backports/ppa
- - sudo apt-get update
  - sudo apt-get install texlive
+# - sudo apt-add-repository -y ppa:texlive-backports/ppa
+# - sudo apt-get update
+# - sudo apt-get install texlive
 
 install:
   - "pip install -r requirements.txt --use-mirrors"
@@ -18,4 +19,4 @@ script:
   - make singlehtml && make singlehtml
   - make text
   - make singletext
-  - make latexpdf
+  - make latex
