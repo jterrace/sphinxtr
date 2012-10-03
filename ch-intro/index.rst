@@ -4,9 +4,22 @@
 Introduction
 ************
 
-A copy of the sphinxtr documentation is available at: http://jterrace.github.com/sphinxtr.
+Creating a PhD thesis is typically done using LaTeX. This works really well for
+producing a PDF, but a giant PDF file is not a great way to put documents on
+the web. There are solutions that exist to turn latex source files into HTML,
+but in my experience, they tend to produce poor HTML output.
 
-The source code for sphinxtr can be found at: https://github.com/jterrace/sphinxtr.
+The `Sphinx <http://sphinx.pocoo.org/>`_ project is a wonderful tool for
+creating portable documents, allowing for output to many different formats.
+Unfortunately, it has many shortcomings when trying to typeset something
+so advanced as a PhD thesis. The aim of this project is to modify Sphinx to
+support all of the needs of a thesis writer.
+
+This sphinxtr output is available in several formats at:
+http://jterrace.github.com/sphinxtr.
+
+The source code for sphinxtr can be found at:
+https://github.com/jterrace/sphinxtr.
 
 Installation
 ============
