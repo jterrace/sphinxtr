@@ -4,6 +4,8 @@
 Introduction
 ************
 
+A copy of the sphinxtr documentation is available at: http://jterrace.github.com/sphinxtr.
+
 Installation
 ============
 
