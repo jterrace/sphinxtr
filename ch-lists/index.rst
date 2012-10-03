@@ -4,6 +4,8 @@
 Lists
 *****
 
+This is a few examples of different list types.
+
 Unordered Lists
 ===============
 
