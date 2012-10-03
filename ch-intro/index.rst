@@ -13,7 +13,9 @@ The `Sphinx <http://sphinx.pocoo.org/>`_ project is a wonderful tool for
 creating portable documents, allowing for output to many different formats.
 Unfortunately, it has many shortcomings when trying to typeset something
 so advanced as a PhD thesis. The aim of this project is to modify Sphinx to
-support all of the needs of a thesis writer.
+support all of the needs of a thesis writer. Many of the patches are not
+appropriate for contributing directly to the upstream Sphinx repository, so
+this is instead a separate project.
 
 This sphinxtr output is available in several formats at:
 http://jterrace.github.com/sphinxtr.
