@@ -20,7 +20,7 @@ D. Eppstein, October 2003.
 from __future__ import generators
 import codecs
 import re
-from sets import Set
+from backports import Set
 
 def register():
     """Enable encodings of the form 'latex+x' where x describes another encoding.
