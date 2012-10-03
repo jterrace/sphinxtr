@@ -6,6 +6,8 @@ Introduction
 
 A copy of the sphinxtr documentation is available at: http://jterrace.github.com/sphinxtr.
 
+The source code for sphinxtr can be found at: https://github.com/jterrace/sphinxtr.
+
 Installation
 ============
 
