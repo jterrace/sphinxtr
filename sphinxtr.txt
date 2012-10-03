@@ -1,0 +1,436 @@
+
+sphinxtr:  The Sphinx Thesis Resource
+*************************************
+
+
+Preamble
+========
+
+
+Abstract
+========
+
+This project is a collection of extensions and monkey patches to
+Sphinx to better format a PhD thesis.
+
+
+Acknowledgements
+================
+
+Thanks to Sphinx for a kickass build system and docutils for the
+groundwork of multiple format output.
+
+
+Dedication
+==========
+
+To my parents.
+
+
+Table of Contents
+=================
+
+
+Introduction
+============
+
+
+Installation
+------------
+
+Install the required Python packages:
+
+   pip install -r requirements.txt
+
+
+Building
+--------
+
+You need "make". The following targets are supported:
+
+html
+   Builds HTML format, separated into sections
+
+singlehtml
+   Builds HTML format on a single page
+
+text
+   Builds text files, separated into sections
+
+singletext
+   Builds a single text file
+
+latexpdf
+   Builds into latex source files and then compiles into a PDF.
+   Requires latex.
+
+
+Changes
+-------
+
+The following changes and additions have been made from vanilla
+Sphinx:
+
+* A cross-format bibtex bibliography based on sphinx-natbib
+
+* Tables that can go inside figures
+
+* Changed table formatting to look pretty, like booktabs
+
+* Improved alignment in table environment
+
+* Added support for short captions that show up in the "list of
+  figures" section
+
+* Changed equation reference formatting from "(1)" to "1"
+
+* Full customization of latex preamble and style file
+
+* Numbered figures
+
+* Numbered section references
+
+* A singletext output that builds into a single text file, similar to
+  singlehtml
+
+* A subfigure environment
+
+
+Documents Using sphinxtr
+------------------------
+
+* Jeff Terrace's PhD Thesis
+
+
+Typography
+==========
+
+This chapter has typography stuff. This also shows how to have a
+toctree inside a chapter.
+
+
+Headings
+--------
+
+The title of this chapter, "Typography", is the first heading level.
+This section, "Headings", is the second level.
+
+
+Third-level
+~~~~~~~~~~~
+
+The third level heading. You probably shouldn't go beyond this because
+it just looks ridiculous, but you can anyway.
+
+
+Fourth-level
+""""""""""""
+
+The fourth level heading.
+
+
+Fifth-level
++++++++++++
+
+The fifth level heading.
+
+-[ Rubric Heading ]-
+
+A rubric heading is just a paragraph heading without document
+structure.
+
+
+Text
+----
+
+You can make *emphasized text*.
+
+You can make **bold text**.
+
+You can make "fixed-width font".
+
+You can make block quotes:
+
+   this is a block quote
+
+You can make code blocks:
+
+   this is a code block
+
+Some convenience substitutions are defined in the epilog:
+
+* e.g.,
+
+* i.e.,
+
+* et al.
+
+* dash—
+
+* non-breaking space -> <-
+
+You can have inline ^superscript or _subscript text.
+
+Big quotes, also known as an epigraph:
+
+   *Your avatar can look any way you want it to, up to the limitations
+   of your equipment. If you're ugly, you can make your avatar
+   beautiful. If you've just gotten out of bed, your avatar can be
+   wearing beautiful clothes and professionally applied makeup. You
+   can look like a gorilla or a dragon, or a giant talking penis in
+   the Metaverse. Spend five minutes walking down the street, and you
+   will see all of these.*
+
+   -- Neal Stephenson, Snow Crash
+
+
+Lists
+=====
+
+
+Unordered Lists
+---------------
+
+* item 1
+
+* item 2
+
+  * item 3
+
+  * item 4
+
+* item 5
+
+
+Ordered Lists
+-------------
+
+1. item 1
+
+2. item 2
+
+   1. item 3
+
+   2. item 4
+
+3. item 5
+
+
+Description Lists
+-----------------
+
+term1
+   definition 1
+
+term2
+   definition 2
+
+term3
+   definition 3
+
+
+Mixed
+-----
+
+term
+   definition
+
+   * list1
+
+   * list2
+
+term2
+   something
+
+   1. num1
+
+   2. num2
+
+      * list1
+
+      * list2
+
+   3. num3
+
+
+Math
+====
+
+Math uses latex math syntax:
+
+   A^{''}_c = \sqrt[3]{ (\frac{L^2_c}{\sum{L^2}})
+   (\frac{A_c}{\sum{A}}) (\frac{A'_c}{\sum{A'}}) } \cdot T
+
+Equations can have labels which you can reference eq-cc-err-stop.
+
+   \frac{log(1 + E_{current})}{log(1 + E_{max})}
+
+
+References and Citations
+========================
+
+You can reference a section by its label. This chapter is Chapter 5.
+
+
+Subsection
+----------
+
+This subsection is Section 5.1.
+
+
+Citations
+---------
+
+COLLADA [1] is a cool 3D file format. I wrote a paper about 3D stuff
+[3]. The website we built is running [2]. The bibliography is in
+bibtex format.
+
+
+Footnotes
+---------
+
+Reference a footnote [1].
+
+
+External Links
+--------------
+
+You can link to a website.
+
+-[ Footnotes ]-
+
+[1] This is a footnote at the end of the page or document.
+
+
+Figures and Tables
+==================
+
+
+Vector SVG Figures
+------------------
+
+Vector figures are nicely supported. You should have a PDF file and an
+SVG file. The PDF will be used for the latex output and the SVG for
+the HTML output. The HTML output has a nice zoom feature using
+Colorbox.
+
+   [image: Sirikata System Overview][image]The Sirikata metaverse
+   platform architecture.
+
+See an example in Figure . I suggest making figures in something like
+Inkscape. If you have only a vector PDF, you can use pdf2svg to
+convert ("brew install pdf2svg" or "apt-get install pdf2svg").
+
+
+Image Figures
+-------------
+
+Regular rasterized images work fine too.
+
+   [image: Open3DHub Browsing Interface][image]The Open3DHub website
+   allows browsing of 3D meshes.
+
+A PNG example is shown in Figure .
+
+
+Subfigures
+----------
+
+The subfigure directives allow you to place multiple figures side-by-
+side in the document. Here's an example:
+
+You can reference the entire Figure  or one of its subfigures, e.g.,
+Figure .
+
+
+Table
+-----
+
+Tables can be put inside the figtable directive which automatically
+numbers them, adds a caption, and adds a label.
+
++-------------+------+------+------+------+------+
+| Progressive | 128  | 256  | 512  | 1024 | 2048 |
++=============+======+======+======+======+======+
+| 0%          | 0.53 | 0.63 | 0.81 | 1.03 | 1.35 |
++-------------+------+------+------+------+------+
+| 25%         | 0.65 | 0.75 | 0.97 | 1.16 | 1.45 |
++-------------+------+------+------+------+------+
+| 50%         | 0.74 | 0.85 | 1.02 | 1.26 | 1.58 |
++-------------+------+------+------+------+------+
+| 75%         | 0.79 | 0.95 | 1.11 | 1.34 | 1.70 |
++-------------+------+------+------+------+------+
+| 100%        | 0.88 | 0.99 | 1.20 | 1.44 | 1.82 |
++-------------+------+------+------+------+------+
+
+Mean size of progressive format as a fraction of the original across
+all test models, shown as a function of the progressive stream
+downloaded and texture resolution.
+
+Table  has all right-aligned columns.
+
++-------------------------+---------------------------+
+| Left Align              | Right Align               |
++=========================+===========================+
+| Some text is left align | Followed by right-aligned |
++-------------------------+---------------------------+
+| Some more text here     | And more text here        |
++-------------------------+---------------------------+
+| And even more text      | Also even more text here  |
++-------------------------+---------------------------+
+
+This table has mixed alignment
+
+Table  has one column left-aligned and one column right-aligned.
+
+
+Text Wrapping Table
+-------------------
+
+Text wrapping in tables work if you specify the width and either
+raggedleft or raggedright.
+
++--------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| Column Family                  | Description                                                                                                                    |
++================================+================================================================================================================================+
+| **Users**                      | Stores a list of users who have authenticated with OpenID.                                                                     |
++--------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| **Names**                      | Stores a list of the 3D models in the database with their associated metadata.                                                 |
++--------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| **TempFiles**                  | Temporarily stores the binary file data of uploaded files until they have been processed.                                      |
++--------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| **Files**                      | Stores the binary file data for uploaded and verified files.                                                                   |
++--------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| **Sessions**                   | Stores HTTP session information used by the Django framework to look up session state associated with a user's browser cookie. |
++--------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| **OpenIdAssocs, OpenIdNonces** | Stores OpenID authentication information for users.                                                                            |
++--------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| **CeleryResults**              | Stores the result of application processing tasks (see Section something).                                                     |
++--------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| **APIConsumers**               | Stores a list of consumers of the API for use with the OAuth protocol.                                                         |
++--------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+
+A list of Open3DHub's Cassandra column families and their descriptions
+
+A text wrapping table example is shown in Figure .
+
+
+Bibliography
+============
+
++------------+--------------------------------------------------------------------------------------------+
+| [1]        | Khronos Group Inc., The.  COLLADA - Digital Asset Schema Release 1.4.1 Specification (2nd  |
++------------+--------------------------------------------------------------------------------------------+
+| [2]        | Open3DHub.  http://open3dhub.com/                                                          |
++------------+--------------------------------------------------------------------------------------------+
+| [3]        | J. Terrace, E. Cheslack-Postava, P. Levis, M. J. Freedman. Unsupervised Conversion of 3D   |
++------------+--------------------------------------------------------------------------------------------+
+
+
+License
+=======
+
+This work is licensed under a Creative Commons Attribution 3.0 United
+States License.
+
+[image: Creative Commons License][image]

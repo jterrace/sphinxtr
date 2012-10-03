@@ -1,0 +1,30 @@
+div#right-bar {
+  margin-top: 20px;
+}
+
+div#right-bar iframe {
+  border: 0;
+  width: 200px;
+  height: 142px;
+  overflow: hidden;
+}
+
+.papertitle {
+  font-style: italic;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
+ul#pubs li {
+  margin-bottom: 7px;
+}
+
+ul#thesis-types li {
+  text-align: center;
+}

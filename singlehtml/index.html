@@ -1,0 +1,603 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Sphinx Thesis Resource (sphinxtr)</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="None" href="index.html#document-index" />
+
+<link rel="stylesheet" type="text/css" href="_static/custom.css" />
+<link rel="stylesheet" type="text/css" href="_static/colorbox/colorbox.css" />
+
+<script type="text/javascript" src="_static/colorbox/jquery.colorbox-min.js"></script>
+
+<script type="text/javascript">
+	function endsWith(str, suffix) {
+	    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+	}
+
+    $(document).ready(function() {
+    	var im, imsrc;
+    	$('img').each(function() {
+    		im = $(this);
+    		imsrc = im.attr('src');
+    		imalt = im.attr('alt');
+    		if (endsWith(imsrc, 'svg')) {
+    			im.wrap($('<a>').attr({'href': imsrc, 'title': imalt}).addClass('svglink'));
+    		}
+    	});
+
+    	$('a.svglink').colorbox({
+    		'width': '95%',
+    		'height': '95%',
+    		'photo': true});
+    });
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html#document-index">Someone&#39;s PhD Thesis</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html#document-index">Table Of Contents</a></h3>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-abstract">Abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-acknowledgements">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-dedication">Dedication</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-ch-intro/index">1 Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#installation">1.1 Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#building">1.2 Building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#changes">1.3 Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#documents-using-sphinxtr">1.4 Documents Using sphinxtr</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-ch-typography/index">2 Typography</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-ch-typography/headings">2.1 Headings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index.html#third-level">2.1.1 Third-level</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="index.html#fourth-level">2.1.1.1 Fourth-level</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index.html#fifth-level">2.1.1.1.1 Fifth-level</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-ch-typography/text">2.2 Text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-ch-lists/index">3 Lists</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#unordered-lists">3.1 Unordered Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ordered-lists">3.2 Ordered Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#description-lists">3.3 Description Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#mixed">3.4 Mixed</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-ch-math/index">4 Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-ch-refs/index">5 References and Citations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#subsection">5.1 Subsection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#citations">5.2 Citations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#footnotes">5.3 Footnotes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#external-links">5.4 External Links</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-ch-figs/index">6 Figures and Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#vector-svg-figures">6.1 Vector SVG Figures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#image-figures">6.2 Image Figures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#subfigures">6.3 Subfigures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#table">6.4 Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#text-wrapping-table">6.5 Text Wrapping Table</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-bibliography">Bibliography</a></li>
+</ul>
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sphinxtr-br-the-sphinx-thesis-resource">
+<span id="doc-title"></span><h1>sphinxtr: <br /> The Sphinx Thesis Resource<a class="headerlink" href="#sphinxtr-br-the-sphinx-thesis-resource" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<span id="document-abstract"></span><div class="section" id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
+</div>
+<p>This project is a collection of extensions and monkey patches to Sphinx to
+better format a PhD thesis.</p>
+<span id="document-acknowledgements"></span><div class="section" id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>
+</div>
+<p>Thanks to Sphinx for a kickass build system and docutils for the groundwork of
+multiple format output.</p>
+<span id="document-dedication"></span><div class="section" id="dedication">
+<h2>Dedication<a class="headerlink" href="#dedication" title="Permalink to this headline">¶</a></h2>
+</div>
+<p>To my parents.</p>
+</div>
+<div class="toctree-wrapper compound">
+<span id="document-ch-intro/index"></span><div class="section" id="introduction">
+<span id="ch-intro"></span><h2>1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installation">
+<h3>1.1 Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<p>Install the required Python packages:</p>
+<div class="highlight-python"><pre>pip install -r requirements.txt</pre>
+</div>
+</div>
+<div class="section" id="building">
+<h3>1.2 Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h3>
+<p>You need <tt class="docutils literal"><span class="pre">make</span></tt>. The following targets are supported:</p>
+<dl class="docutils">
+<dt>html</dt>
+<dd>Builds HTML format, separated into sections</dd>
+<dt>singlehtml</dt>
+<dd>Builds HTML format on a single page</dd>
+<dt>text</dt>
+<dd>Builds text files, separated into sections</dd>
+<dt>singletext</dt>
+<dd>Builds a single text file</dd>
+<dt>latexpdf</dt>
+<dd>Builds into latex source files and then compiles into a PDF. Requires latex.</dd>
+</dl>
+</div>
+<div class="section" id="changes">
+<h3>1.3 Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h3>
+<p>The following changes and additions have been made from vanilla Sphinx:</p>
+<ul class="simple">
+<li>A cross-format bibtex bibliography based on sphinx-natbib</li>
+<li>Tables that can go inside figures</li>
+<li>Changed table formatting to look pretty, like booktabs</li>
+<li>Improved alignment in table environment</li>
+<li>Added support for short captions that show up in the &quot;list of figures&quot; section</li>
+<li>Changed equation reference formatting from &quot;(1)&quot; to &quot;1&quot;</li>
+<li>Full customization of latex preamble and style file</li>
+<li>Numbered figures</li>
+<li>Numbered section references</li>
+<li>A singletext output that builds into a single text file, similar to singlehtml</li>
+<li>A subfigure environment</li>
+</ul>
+</div>
+<div class="section" id="documents-using-sphinxtr">
+<h3>1.4 Documents Using sphinxtr<a class="headerlink" href="#documents-using-sphinxtr" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://www.cs.princeton.edu/~jterrace/thesis/">Jeff Terrace's PhD Thesis</a></li>
+</ul>
+</div>
+</div>
+<span id="document-ch-typography/index"></span><div class="section" id="typography">
+<span id="ch-typography"></span><h2>2 Typography<a class="headerlink" href="#typography" title="Permalink to this headline">¶</a></h2>
+<p>This chapter has typography stuff. This also shows how to have a toctree inside
+a chapter.</p>
+<div class="toctree-wrapper compound">
+<span id="document-ch-typography/headings"></span><div class="section" id="headings">
+<h3>2.1 Headings<a class="headerlink" href="#headings" title="Permalink to this headline">¶</a></h3>
+<p>The title of this chapter, &quot;Typography&quot;, is the first heading level. This
+section, &quot;Headings&quot;, is the second level.</p>
+<div class="section" id="third-level">
+<h4>2.1.1 Third-level<a class="headerlink" href="#third-level" title="Permalink to this headline">¶</a></h4>
+<p>The third level heading. You probably shouldn't go beyond this because it just
+looks ridiculous, but you can anyway.</p>
+<div class="section" id="fourth-level">
+<h5>2.1.1.1 Fourth-level<a class="headerlink" href="#fourth-level" title="Permalink to this headline">¶</a></h5>
+<p>The fourth level heading.</p>
+<div class="section" id="fifth-level">
+<h6>2.1.1.1.1 Fifth-level<a class="headerlink" href="#fifth-level" title="Permalink to this headline">¶</a></h6>
+<p>The fifth level heading.</p>
+<p class="rubric">Rubric Heading</p>
+<p>A rubric heading is just a paragraph heading without document structure.</p>
+</div>
+</div>
+</div>
+</div>
+<span id="document-ch-typography/text"></span><div class="section" id="text">
+<h3>2.2 Text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h3>
+<p>You can make <em>emphasized text</em>.</p>
+<p>You can make <strong>bold text</strong>.</p>
+<p>You can make <tt class="docutils literal"><span class="pre">fixed-width</span> <span class="pre">font</span></tt>.</p>
+<p>You can make block quotes:</p>
+<blockquote>
+<div>this is a block quote</div></blockquote>
+<p>You can make code blocks:</p>
+<div class="highlight-python"><pre>this is a code block</pre>
+</div>
+<p>Some convenience substitutions are defined in the epilog:</p>
+<ul class="simple">
+<li>e.g.,</li>
+<li>i.e.,</li>
+<li>et al.</li>
+<li>dash—</li>
+<li>non-breaking space -&gt;&nbsp;&lt;-</li>
+</ul>
+<p>You can have inline <sup>superscript</sup> or <sub>subscript</sub> text.</p>
+<p>Big quotes, also known as an epigraph:</p>
+<blockquote class="epigraph">
+<div><p><em>Your avatar can look any way you want it to, up to the limitations of your equipment. If you're ugly, you can make your avatar beautiful. If you've just gotten out of bed, your avatar can be wearing beautiful clothes and professionally applied makeup. You can look like a gorilla or a dragon, or a giant talking penis in the Metaverse. Spend five minutes walking down the street, and you will see all of these.</em></p>
+<p class="attribution">&mdash;Neal Stephenson, Snow Crash</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+<span id="document-ch-lists/index"></span><div class="section" id="lists">
+<span id="ch-lists"></span><h2>3 Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="unordered-lists">
+<h3>3.1 Unordered Lists<a class="headerlink" href="#unordered-lists" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>item 1</li>
+<li>item 2<ul>
+<li>item 3</li>
+<li>item 4</li>
+</ul>
+</li>
+<li>item 5</li>
+</ul>
+</div>
+<div class="section" id="ordered-lists">
+<h3>3.2 Ordered Lists<a class="headerlink" href="#ordered-lists" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>item 1</li>
+<li>item 2<ol class="loweralpha">
+<li>item 3</li>
+<li>item 4</li>
+</ol>
+</li>
+<li>item 5</li>
+</ol>
+</div>
+<div class="section" id="description-lists">
+<h3>3.3 Description Lists<a class="headerlink" href="#description-lists" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>term1</dt>
+<dd>definition 1</dd>
+<dt>term2</dt>
+<dd>definition 2</dd>
+<dt>term3</dt>
+<dd>definition 3</dd>
+</dl>
+</div>
+<div class="section" id="mixed">
+<h3>3.4 Mixed<a class="headerlink" href="#mixed" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>term</dt>
+<dd><p class="first">definition</p>
+<ul class="last simple">
+<li>list1</li>
+<li>list2</li>
+</ul>
+</dd>
+<dt>term2</dt>
+<dd><p class="first">something</p>
+<ol class="last arabic simple">
+<li>num1</li>
+<li>num2<ul>
+<li>list1</li>
+<li>list2</li>
+</ul>
+</li>
+<li>num3</li>
+</ol>
+</dd>
+</dl>
+</div>
+</div>
+<span id="document-ch-math/index"></span><div class="section" id="math">
+<span id="ch-math"></span><h2>4 Math<a class="headerlink" href="#math" title="Permalink to this headline">¶</a></h2>
+<p>Math uses latex math syntax:</p>
+<div class="math">
+\[A^{''}_c =
+\sqrt[3]{
+(\frac{L^2_c}{\sum{L^2}})
+(\frac{A_c}{\sum{A}})
+(\frac{A'_c}{\sum{A'}})
+} \cdot T\]</div>
+<p>Equations can have labels which you can reference&nbsp;<a href="#equation-eq-cc-err-stop">1</a>.</p>
+<div class="math" id="equation-eq-cc-err-stop">
+<span class="eqno">(1)</span>\[\frac{log(1 + E_{current})}{log(1 + E_{max})}\]</div>
+</div>
+<span id="document-ch-refs/index"></span><div class="section" id="references-and-citations">
+<span id="ch-refs"></span><h2>5 References and Citations<a class="headerlink" href="#references-and-citations" title="Permalink to this headline">¶</a></h2>
+<p>You can reference a section by its label. This chapter is
+Chapter&nbsp;<a class="reference internal" href="index.html#ch-refs">5</a>.</p>
+<div class="section" id="subsection">
+<span id="sec-refs-sub1"></span><h3>5.1 Subsection<a class="headerlink" href="#subsection" title="Permalink to this headline">¶</a></h3>
+<p>This subsection is Section&nbsp;<a class="reference internal" href="index.html#sec-refs-sub1">5.1</a>.</p>
+</div>
+<div class="section" id="citations">
+<h3>5.2 Citations<a class="headerlink" href="#citations" title="Permalink to this headline">¶</a></h3>
+<p>COLLADA&nbsp;<span class="citation">[<a class="reference internal" href="index.html#citation-collada">1</a><span class="citation">]</span></span> is a cool 3D file format. I wrote a paper about
+3D stuff&nbsp;<span class="citation">[<a class="reference internal" href="index.html#citation-icmepaper">3</a><span class="citation">]</span></span>. The website we built is running&nbsp;<span class="citation">[<a class="reference internal" href="index.html#citation-open3dhub">2</a><span class="citation">]</span></span>. The bibliography is in bibtex format.</p>
+</div>
+<div class="section" id="footnotes">
+<h3>5.3 Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h3>
+<p>Reference a footnote&nbsp;<a class="footnote-reference" href="#foot-something" id="id1"><sup>1</sup></a>.</p>
+</div>
+<div class="section" id="external-links">
+<h3>5.4 External Links<a class="headerlink" href="#external-links" title="Permalink to this headline">¶</a></h3>
+<p>You can link to a <a class="reference external" href="http://google.com/">website</a>.</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="foot-something" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>This is a footnote at the end of the page or document.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<span id="document-ch-figs/index"></span><div class="section" id="figures-and-tables">
+<span id="ch-figs"></span><h2>6 Figures and Tables<a class="headerlink" href="#figures-and-tables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="vector-svg-figures">
+<h3>6.1 Vector SVG Figures<a class="headerlink" href="#vector-svg-figures" title="Permalink to this headline">¶</a></h3>
+<p>Vector figures are nicely supported. You should have a PDF file and an SVG
+file. The PDF will be used for the latex output and the SVG for the HTML
+output. The HTML output has a nice zoom feature using Colorbox.</p>
+<div class="figure align-center" id="fig-sirikata-overview">
+<img alt="Sirikata System Overview" src="_images/overview.svg" width="60%" /><p class="caption"><strong>Figure 6.1:</strong> The Sirikata metaverse platform architecture.</p>
+</div>
+<p>See an example in Figure&nbsp;<a href="#fig-sirikata-overview">6.1</a>. I suggest making
+figures in something like Inkscape. If you have only a vector PDF, you can use
+pdf2svg to convert (<tt class="docutils literal"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">pdf2svg</span></tt> or <tt class="docutils literal"><span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">pdf2svg</span></tt>).</p>
+</div>
+<div class="section" id="image-figures">
+<h3>6.2 Image Figures<a class="headerlink" href="#image-figures" title="Permalink to this headline">¶</a></h3>
+<p>Regular rasterized images work fine too.</p>
+<div class="figure align-center" id="fig-open3dhub-icons">
+<img alt="Open3DHub Browsing Interface" src="_images/icons.png" style="width: 86.05%;" />
+<p class="caption"><strong>Figure 6.2:</strong> The Open3DHub website allows browsing of 3D meshes.</p>
+</div>
+<p>A PNG example is shown in Figure&nbsp;<a href="#fig-open3dhub-icons">6.2</a>.</p>
+</div>
+<div class="section" id="subfigures">
+<h3>6.3 Subfigures<a class="headerlink" href="#subfigures" title="Permalink to this headline">¶</a></h3>
+<p>The subfigure directives allow you to place multiple figures side-by-side in
+the document. Here's an example:</p>
+<div class="figure compound align-center" id="fig-cc-teddy">
+<div style="width: 30%" class="subfigure align-center" id="fig-cc-teddy-base">
+<img alt="Base Mesh + 128x128 Texture (334 KB)" src="_images/teddy_0_128.png" style="width: 90%;" />
+<p class="caption"><strong>(a)</strong> Base Mesh + 128x128 Texture (334 KB)</p>
+</div>
+<div style="width: 30%" class="subfigure align-center" id="fig-cc-teddy-25">
+<img alt="Base Mesh + 25% Stream + 256x256 Texture (568 KB)" src="_images/teddy_25_256.png" style="width: 90%;" />
+<p class="caption"><strong>(b)</strong> Base Mesh + 25% Stream + 256x256 Texture (568 KB)</p>
+</div>
+<div style="width: 30%" class="subfigure align-center" id="fig-cc-teddy-50">
+<img alt="Base Mesh + 50% Stream + 512x512 Texture (923 KB)" src="_images/teddy_50_512.png" style="width: 90%;" />
+<p class="caption"><strong>(c)</strong> Base Mesh + 50% Stream + 512x512 Texture (923 KB)</p>
+</div>
+<div style="width: 30%" class="subfigure align-center" id="fig-cc-teddy-75">
+<img alt="Base Mesh + 75% Stream + 1024x1024 Texture (1755 KB)" src="_images/teddy_75_1024.png" style="width: 90%;" />
+<p class="caption"><strong>(d)</strong> Base Mesh + 75% Stream + 1024x1024 Texture (1755 KB)</p>
+</div>
+<div style="width: 30%" class="subfigure align-center" id="fig-cc-teddy-100">
+<img alt="Base Mesh + 100% Stream + 2048x2048 Texture (4385 KB)" src="_images/teddy_100_2048.png" style="width: 90%;" />
+<p class="caption"><strong>(e)</strong> Base Mesh + 100% Stream + 2048x2048 Texture (4385 KB)</p>
+</div>
+<div style="width: 30%" class="subfigure align-center" id="fig-cc-teddy-original">
+<img alt="Original Mesh (913 KB)" src="_images/teddy_orig.png" style="width: 90%;" />
+<p class="caption"><strong>(f)</strong> Original Mesh (913 KB)</p>
+</div>
+<p class="caption"><strong>Figure 6.3:</strong> Example of a teddy bear model at different resolutions of the
+progressive format (1 draw call) and its original format (16 draw
+calls). The size in KB assumes downloading progressively, e.g.,
+<a href="#fig-cc-teddy-100">6.3e</a>'s size includes lower-resolution textures.</p>
+</div><p id="fig-cc-teddy">You can reference the entire Figure&nbsp;<a href="#fig-cc-teddy">6.3</a> or one of its
+subfigures, e.g., Figure&nbsp;<a href="#fig-cc-teddy-original">6.3f</a>.</p>
+</div>
+<div class="section" id="table">
+<h3>6.4 Table<a class="headerlink" href="#table" title="Permalink to this headline">¶</a></h3>
+<p>Tables can be put inside the figtable directive which automatically numbers
+them, adds a caption, and adds a label.</p>
+<div class="figure align-center" id="table-cc-file-size">
+<center><table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head align-right">Progressive</th>
+<th class="head align-right">128</th>
+<th class="head align-right">256</th>
+<th class="head align-right">512</th>
+<th class="head align-right">1024</th>
+<th class="head align-right">2048</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td class="align-right">0%</td>
+<td class="align-right">0.53</td>
+<td class="align-right">0.63</td>
+<td class="align-right">0.81</td>
+<td class="align-right">1.03</td>
+<td class="align-right">1.35</td>
+</tr>
+<tr class="row-odd"><td class="align-right">25%</td>
+<td class="align-right">0.65</td>
+<td class="align-right">0.75</td>
+<td class="align-right">0.97</td>
+<td class="align-right">1.16</td>
+<td class="align-right">1.45</td>
+</tr>
+<tr class="row-even"><td class="align-right">50%</td>
+<td class="align-right">0.74</td>
+<td class="align-right">0.85</td>
+<td class="align-right">1.02</td>
+<td class="align-right">1.26</td>
+<td class="align-right">1.58</td>
+</tr>
+<tr class="row-odd"><td class="align-right">75%</td>
+<td class="align-right">0.79</td>
+<td class="align-right">0.95</td>
+<td class="align-right">1.11</td>
+<td class="align-right">1.34</td>
+<td class="align-right">1.70</td>
+</tr>
+<tr class="row-even"><td class="align-right">100%</td>
+<td class="align-right">0.88</td>
+<td class="align-right">0.99</td>
+<td class="align-right">1.20</td>
+<td class="align-right">1.44</td>
+<td class="align-right">1.82</td>
+</tr>
+</tbody>
+</table>
+<p class="caption"><strong>Figure 6.4:</strong> Mean size of progressive format as a fraction of the
+original across all test models, shown as a function of the
+progressive stream downloaded and texture resolution.</p>
+</center></div><p id="table-cc-file-size">Table&nbsp;<a href="#table-cc-file-size">6.4</a> has all right-aligned columns.</p>
+<div class="figure align-center" id="table-mixed-align">
+<center><table border="1" class="docutils">
+<colgroup>
+<col width="48%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head align-left">Left Align</th>
+<th class="head align-right">Right Align</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td class="align-left">Some text is left align</td>
+<td class="align-right">Followed by right-aligned</td>
+</tr>
+<tr class="row-odd"><td class="align-left">Some more text here</td>
+<td class="align-right">And more text here</td>
+</tr>
+<tr class="row-even"><td class="align-left">And even more text</td>
+<td class="align-right">Also even more text here</td>
+</tr>
+</tbody>
+</table>
+<p class="caption"><strong>Figure 6.5:</strong> This table has mixed alignment</p>
+</center></div><p id="table-mixed-align">Table&nbsp;<a href="#table-mixed-align">6.5</a> has one column left-aligned and one
+column right-aligned.</p>
+</div>
+<div class="section" id="text-wrapping-table">
+<h3>6.5 Text Wrapping Table<a class="headerlink" href="#text-wrapping-table" title="Permalink to this headline">¶</a></h3>
+<p>Text wrapping in tables work if you specify the width and either raggedleft or
+raggedright.</p>
+<div class="figure align-center" id="fig-open3dhub-cfs">
+<center><table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head align-right align-top">Column Family</th>
+<th class="head align-top">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td class="align-right align-top"><strong>Users</strong></td>
+<td class="align-top">Stores a list of users who have authenticated with OpenID.</td>
+</tr>
+<tr class="row-odd"><td class="align-right align-top"><strong>Names</strong></td>
+<td class="align-top">Stores a list of the 3D models in the database with their associated metadata.</td>
+</tr>
+<tr class="row-even"><td class="align-right align-top"><strong>TempFiles</strong></td>
+<td class="align-top">Temporarily stores the binary file data of uploaded files until they have been processed.</td>
+</tr>
+<tr class="row-odd"><td class="align-right align-top"><strong>Files</strong></td>
+<td class="align-top">Stores the binary file data for uploaded and verified files.</td>
+</tr>
+<tr class="row-even"><td class="align-right align-top"><strong>Sessions</strong></td>
+<td class="align-top">Stores HTTP session information used by the Django framework to look up session state associated with a user's browser cookie.</td>
+</tr>
+<tr class="row-odd"><td class="align-right align-top"><strong>OpenIdAssocs, OpenIdNonces</strong></td>
+<td class="align-top">Stores OpenID authentication information for users.</td>
+</tr>
+<tr class="row-even"><td class="align-right align-top"><strong>CeleryResults</strong></td>
+<td class="align-top">Stores the result of application processing tasks (see Section something).</td>
+</tr>
+<tr class="row-odd"><td class="align-right align-top"><strong>APIConsumers</strong></td>
+<td class="align-top">Stores a list of consumers of the API for use with the OAuth protocol.</td>
+</tr>
+</tbody>
+</table>
+<p class="caption"><strong>Figure 6.6:</strong> A list of Open3DHub's Cassandra column families and their descriptions</p>
+</center></div><p id="fig-open3dhub-cfs">A text wrapping table example is shown in Figure&nbsp;<a href="#fig-open3dhub-cfs">6.6</a>.</p>
+</div>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+<span id="document-bibliography"></span><div class="section" id="bibliography">
+<h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h2>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col class="label" width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="footnote row-odd" id="citation-collada"><td>[1]</td>
+<td><span class="misc reference"><span class="author">Khronos Group Inc., The</span><span>.  </span><span class="title">COLLADA - Digital Asset Schema Release 1.4.1 Specification (2nd Edition)</span><span>.  </span><a class="reference external" href="http://www.khronos.org/files/collada_spec_1_4.pdf">http://www.khronos.org/files/collada_spec_1_4.pdf</a><span>, </span><span class="year">2008</span><span>.</span></span></td>
+</tr>
+<tr class="footnote row-even" id="citation-open3dhub"><td>[2]</td>
+<td><span class="misc reference"><span class="title">Open3DHub</span><span>.  </span><a class="reference external" href="http://open3dhub.com/">http://open3dhub.com/</a></span></td>
+</tr>
+<tr class="footnote row-odd" id="citation-icmepaper"><td>[3]</td>
+<td><span class="inproceedings reference"><span class="author">J. Terrace</span><span>, </span><span class="author">E. Cheslack-Postava</span><span>, </span><span class="author">P. Levis</span><span>, </span><span class="author">M. J. Freedman</span><span>.  </span><span class="title">Unsupervised Conversion of 3D Models for Interactive Metaverses</span><span>.  </span><em class="publication">Proc. ICME '12</em><span>, </span><span class="year">2012</span><span>.</span></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>This work is licensed under a <a class="reference external" href="http://creativecommons.org/licenses/by/3.0/us/deed.en_US">Creative Commons Attribution 3.0 United States
+License</a>.</p>
+<img alt="Creative Commons License" class="align-center" src="_images/ccicon88x31.png" />
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html#document-index">Someone&#39;s PhD Thesis</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright by Jeff Terrace, 2012..
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

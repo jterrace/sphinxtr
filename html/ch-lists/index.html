@@ -1,0 +1,206 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3 Lists &mdash; The Sphinx Thesis Resource (sphinxtr)</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="The Sphinx Thesis Resource (sphinxtr)" href="../index.html" />
+    <link rel="next" title="4 Math" href="../ch-math/index.html" />
+    <link rel="prev" title="2.2 Text" href="../ch-typography/text.html" />
+
+<link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+<link rel="stylesheet" type="text/css" href="../_static/colorbox/colorbox.css" />
+
+<script type="text/javascript" src="../_static/colorbox/jquery.colorbox-min.js"></script>
+
+<script type="text/javascript">
+	function endsWith(str, suffix) {
+	    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+	}
+
+    $(document).ready(function() {
+    	var im, imsrc;
+    	$('img').each(function() {
+    		im = $(this);
+    		imsrc = im.attr('src');
+    		imalt = im.attr('alt');
+    		if (endsWith(imsrc, 'svg')) {
+    			im.wrap($('<a>').attr({'href': imsrc, 'title': imalt}).addClass('svglink'));
+    		}
+    	});
+
+    	$('a.svglink').colorbox({
+    		'width': '95%',
+    		'height': '95%',
+    		'photo': true});
+    });
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../ch-math/index.html" title="4 Math"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="../ch-typography/text.html" title="2.2 Text"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Someone&#39;s PhD Thesis</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3 Lists</a><ul>
+<li><a class="reference internal" href="#unordered-lists">3.1 Unordered Lists</a></li>
+<li><a class="reference internal" href="#ordered-lists">3.2 Ordered Lists</a></li>
+<li><a class="reference internal" href="#description-lists">3.3 Description Lists</a></li>
+<li><a class="reference internal" href="#mixed">3.4 Mixed</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../ch-typography/text.html"
+                        title="previous chapter">2.2 Text</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../ch-math/index.html"
+                        title="next chapter">4 Math</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ch-lists/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="lists">
+<span id="ch-lists"></span><h1>3 Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="unordered-lists">
+<h2>3.1 Unordered Lists<a class="headerlink" href="#unordered-lists" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>item 1</li>
+<li>item 2<ul>
+<li>item 3</li>
+<li>item 4</li>
+</ul>
+</li>
+<li>item 5</li>
+</ul>
+</div>
+<div class="section" id="ordered-lists">
+<h2>3.2 Ordered Lists<a class="headerlink" href="#ordered-lists" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>item 1</li>
+<li>item 2<ol class="loweralpha">
+<li>item 3</li>
+<li>item 4</li>
+</ol>
+</li>
+<li>item 5</li>
+</ol>
+</div>
+<div class="section" id="description-lists">
+<h2>3.3 Description Lists<a class="headerlink" href="#description-lists" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>term1</dt>
+<dd>definition 1</dd>
+<dt>term2</dt>
+<dd>definition 2</dd>
+<dt>term3</dt>
+<dd>definition 3</dd>
+</dl>
+</div>
+<div class="section" id="mixed">
+<h2>3.4 Mixed<a class="headerlink" href="#mixed" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>term</dt>
+<dd><p class="first">definition</p>
+<ul class="last simple">
+<li>list1</li>
+<li>list2</li>
+</ul>
+</dd>
+<dt>term2</dt>
+<dd><p class="first">something</p>
+<ol class="last arabic simple">
+<li>num1</li>
+<li>num2<ul>
+<li>list1</li>
+<li>list2</li>
+</ul>
+</li>
+<li>num3</li>
+</ol>
+</dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../ch-math/index.html" title="4 Math"
+             >next</a></li>
+        <li class="right" >
+          <a href="../ch-typography/text.html" title="2.2 Text"
+             >previous</a> |</li>
+        <li><a href="../index.html">Someone&#39;s PhD Thesis</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright by Jeff Terrace, 2012..
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
