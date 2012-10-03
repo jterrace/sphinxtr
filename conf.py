@@ -61,6 +61,7 @@ exclude_patterns = [
                     '_build',
                     'tex',
                     'epilog.rst',
+                    'README.rst',
                     ]
 
 # The master toctree document.
