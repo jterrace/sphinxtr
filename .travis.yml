@@ -1,0 +1,15 @@
+language: python
+
+python:
+  - 2.6
+  - 2.7
+
+install:
+  - "pip install -r requirements.txt --use-mirrors"
+
+script:
+  - make html && make html
+  - make singlehtml && make singlehtml
+  - make text
+  - make singletext
+  - make latexpdf
