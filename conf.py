@@ -193,12 +193,14 @@ latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     'papersize': 'letterpaper',
     
-    # gets passed to \documentclass
-    # default options are single sided, double spaced
-    # you can change them with these options:
-    #  * twoside
-    #  * singlespace
-    'classoptions': ',english,lof',
+    # * gets passed to \documentclass
+    # * default options are single sided, double spaced
+    #   you can change them with these options:
+    #   * twoside
+    #   * singlespace
+    # * you might want to omit the list of tables (lot)
+    #   if you use figtable without the :nofig: option
+    'classoptions': ',english,lof,lot',
     
     # The font size ('10pt', '11pt' or '12pt').
     'pointsize': '12pt',

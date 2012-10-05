@@ -18,10 +18,16 @@ def depart_figtable_node(self, node):
     pass
 
 def visit_figtable_tex(self, node):
-    self.body.append('\n\n\\begin{figure}[tbp]\n\\capstart\n\\begin{center}\n')
+    if node['nofig']:
+        self.body.append('\n\n\\begin{table}\n\\capstart\n\\begin{center}\n')
+    else:
+        self.body.append('\n\n\\begin{figure}[tbp]\n\\capstart\n\\begin{center}\n')
 
 def depart_figtable_tex(self, node):
-    self.body.append('\n\\end{center}\n\\end{figure}\n')
+    if node['nofig']:
+        self.body.append('\n\\end{center}\n\\end{table}\n')
+    else:
+        self.body.append('\n\\end{center}\n\\end{figure}\n')
 
 def visit_figtable_html(self, node):
     atts = {'class': 'figure align-center'}
@@ -33,21 +39,24 @@ def depart_figtable_html(self, node):
 class FigTableDirective(Directive):
     
     has_content = True
-    optional_arguments = 3
+    optional_arguments = 5
     final_argument_whitespace = True
 
     option_spec = {'label': directives.uri,
                    'spec': directives.unchanged,
                    'caption': directives.unchanged,
-                   'alt': directives.unchanged}
+                   'alt': directives.unchanged,
+                   'nofig': directives.flag}
 
     def run(self):
         label = self.options.get('label', None)
         spec = self.options.get('spec', None)
         caption = self.options.get('caption', None)
         alt = self.options.get('alt', None)
+        nofig = 'nofig' in self.options
         
         figtable_node = figtable('', ids=[label] if label is not None else [])
+        figtable_node['nofig'] = nofig
         
         if spec is not None:
             table_spec_node = addnodes.tabular_col_spec()

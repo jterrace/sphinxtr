@@ -119,8 +119,8 @@ the document. Here's an example:
 You can reference the entire Figure |nbsp| :num:`fig-cc-teddy` or one of its
 subfigures, |eg| Figure |nbsp| :num:`fig-cc-teddy-original`.
 
-Table
-=====
+Tables
+======
 
 Tables can be put inside the figtable directive which automatically numbers
 them, adds a caption, and adds a label.
@@ -161,6 +161,27 @@ Table |nbsp| :num:`table-cc-file-size` has all right-aligned columns.
 
 Table |nbsp| :num:`table-mixed-align` has one column left-aligned and one
 column right-aligned.
+
+.. figtable::
+    :label: table-no-fig
+    :caption: A table not inside a figure
+    :alt: Plain Table
+    :spec: r r r r r r r
+    :nofig:
+
+    ===========  ====  ====  ====  ====  ====
+    Progressive  128   256   512   1024  2048
+    ===========  ====  ====  ====  ====  ====
+             0%  0.53  0.63  0.81  1.03  1.35
+            25%  0.65  0.75  0.97  1.16  1.45
+            50%  0.74  0.85  1.02  1.26  1.58
+            75%  0.79  0.95  1.11  1.34  1.70
+           100%  0.88  0.99  1.20  1.44  1.82
+    ===========  ====  ====  ====  ====  ====
+
+Some people don't like tables inside figures, so you can disable it with an
+argument to the figtable directive. A table not inside a figure is shown
+in :num:`table-no-fig`. Note this only effects the latex output.
 
 Text Wrapping Table
 ===================
