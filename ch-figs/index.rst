@@ -209,3 +209,53 @@ raggedright.
     ============================== ==============================================================================================================================
 
 A text wrapping table example is shown in Figure |nbsp| :num:`fig-open3dhub-cfs`.
+
+CSV and List Tables
+=======================
+
+You can use CSV Table and List table from
+`docutils directives <http://docutils.sourceforge.net/docs/ref/rst/directives.html#tables>`_.
+
+.. figtable::
+    :label: table-csv
+    :caption: CSV table
+    :alt: CSV table
+    :spec: >{\raggedright\arraybackslash}p{0.15\linewidth} p{0.20\linewidth} p{0.30\linewidth}
+
+
+    .. csv-table::
+       :header: "Treat", "Quantity", "Description"
+       :widths: 15, 10, 30
+    
+       "Albatross", 2.99, "On a stick!"
+       "Crunchy Frog", 1.49, "If we took the bones out, it wouldn't be
+       crunchy, now would it?"
+       "Gannet Ripple", 1.99, "On a stick!"
+
+
+.. figtable::
+    :label: table-list
+    :caption: List table
+    :alt: List table
+    :spec: >{\raggedright\arraybackslash}p{0.15\linewidth} p{0.20\linewidth} p{0.30\linewidth}
+
+    .. list-table::
+       :widths: 15 10 30
+       :header-rows: 1
+    
+       * - Treat
+         - Quantity
+         - Description
+       * - Albatross
+         - 2.99
+         - On a stick!
+       * - Crunchy Frog
+         - 1.49
+         - If we took the bones out, it wouldn't be
+           crunchy, now would it?
+       * - Gannet Ripple
+         - 1.99
+         - On a stick!vvv
+
+
+A CSV table example is shown in Figure |nbsp| :num:`table-csv` and List table in Figure |nbsp| :num:`table-list`.
