@@ -252,6 +252,7 @@ latex_additional_files = [
     'tex/Makefile',
     'tex/refstyle.bst',
     'refs.bib',
+    'tex/ccicons.sty',
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
