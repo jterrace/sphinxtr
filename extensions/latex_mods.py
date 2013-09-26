@@ -65,14 +65,15 @@ class DocTranslator(BaseTranslator):
 
     def depart_table(self, node):
         self.body = self._body
+        colspec = self.table.colspec or ''
 
-        if 'p{' in self.table.colspec or 'm{' in self.table.colspec or 'b{' in self.table.colspec:
+        if 'p{' in colspec or 'm{' in colspec or 'b{' in colspec:
             self.body.append('\n\\bodyspacing\n')
 
         self.body.append('\n\\begin{tabular}')
 
-        if self.table.colspec:
-            self.body.append(self.table.colspec)
+        if colspec:
+            self.body.append(colspec)
         else:
             self.body.append('{|' + ('l|' * self.table.colcount) + '}')
 
