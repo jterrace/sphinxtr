@@ -26,11 +26,11 @@ class DocTranslator(BaseTranslator):
             look_node = node.parent.children[caption_idx - 1]
         else:
             look_node = node.parent
-        
+
         short_caption = look_node.get('alt', '').translate(tex_escape_map)
         if short_caption != "":
             short_caption = '[%s]' % short_caption
-        
+
         self.in_caption += 1
         self.body.append('\\caption%s{' % short_caption)
     def depart_caption(self, node):
@@ -53,51 +53,51 @@ class DocTranslator(BaseTranslator):
             raise UnsupportedError(
                 '%s:%s: nested tables are not yet implemented.' %
                 (self.curfilestack[-1], node.line or ''))
-        
+
         self.table = sphinx.writers.latex.Table()
         self.table.longtable = False
         self.tablebody = []
         self.tableheaders = []
-        
+
         # Redirect body output until table is finished.
         self._body = self.body
         self.body = self.tablebody
-    
+
     def depart_table(self, node):
         self.body = self._body
-        
+
         if 'p{' in self.table.colspec or 'm{' in self.table.colspec or 'b{' in self.table.colspec:
             self.body.append('\n\\bodyspacing\n')
-        
+
         self.body.append('\n\\begin{tabular}')
-        
+
         if self.table.colspec:
             self.body.append(self.table.colspec)
         else:
             self.body.append('{|' + ('l|' * self.table.colcount) + '}')
-        
+
         self.body.append('\n')
-        
+
         if self.table.caption is not None:
             for id in self.next_table_ids:
                 self.body.append(self.hypertarget(id, anchor=False))
             self.next_table_ids.clear()
-        
+
         self.body.append('\\toprule\n')
-        
+
         self.body.extend(self.tableheaders)
-        
+
         self.body.append('\\midrule\n')
-        
+
         self.body.extend(self.tablebody)
-        
+
         self.body.append('\\bottomrule\n')
-        
+
         self.body.append('\n\\end{tabular}\n')
-        
+
         self.table = None
         self.tablebody = None
-    
+
     def depart_row(self, node):
         if self.previous_spanning_row == 1:
             self.previous_spanning_row = 0
@@ -178,45 +178,45 @@ class CustomLaTeXTranslator(DocTranslator):
                     #self.generate_indices() +
                     #FOOTER % self.elements
                     )
-    
+
     def unknown_departure(self, node):
         if node.tagname == 'only':
             return
         return super(CustomLaTeXTranslator, self).unknown_departure(node)
-    
+
     def unknown_visit(self, node):
         if node.tagname == 'only':
             return
         return super(CustomLaTeXTranslator, self).unknown_visit(node)
 
 class CustomLaTeXBuilder(sphinx.builders.latex.LaTeXBuilder):
-    
+
     def write(self, *ignored):
         super(CustomLaTeXBuilder, self).write(*ignored)
-        
+
         backup_translator = sphinx.writers.latex.LaTeXTranslator
         sphinx.writers.latex.LaTeXTranslator = CustomLaTeXTranslator
         backup_doc = sphinx.writers.latex.BEGIN_DOC
         sphinx.writers.latex.BEGIN_DOC = ''
-        
+
         # output these as include files
         for docname in ['abstract', 'dedication', 'acknowledgements']:
             destination = FileOutput(
                     destination_path=os.path.join(self.outdir, '%s.inc' % docname),
                     encoding='utf-8')
-            
+
             docwriter = LaTeXWriter(self)
             doctree = self.env.get_doctree(docname)
-            
+
             docsettings = OptionParser(
                 defaults=self.env.settings,
                 components=(docwriter,)).get_default_values()
             doctree.settings = docsettings
             docwriter.write(doctree, destination)
-        
+
         sphinx.writers.latex.LaTeXTranslator = backup_translator
         sphinx.writers.latex.BEGIN_DOC = backup_doc
-    
+
     def finish(self, *args, **kwargs):
         super(CustomLaTeXBuilder, self).finish(*args, **kwargs)
         # copy additional files again *after* tex support files so we can override them!
