@@ -26,7 +26,31 @@ https://github.com/jterrace/sphinxtr.
 Installation
 ============
 
-Install the required Python packages::
+If you are running the ``apt`` packet manager you can install the requirements
+with the following command::
+
+    sudo apt-get install python-setuptools python-virtualenv texlive-full
+
+Otherwise you can maybe find other ways to install the following packages:
+
+* `Python 2 <http://www.python.org/getit/>`_ (preinstalled on most systems)
+* `Setuptools <https://pypi.python.org/pypi/setuptools/1.1.6#installation-instructions>`_
+  (look for the most up to date version)
+* `Virtualenv <http://www.virtualenv.org/en/latest/#installation>`_
+* `Tex Live <http://www.tug.org/texlive/quickinstall.html>`_
+
+Now create a virtualenv. This will help you to separate the requirements from
+this project from other Python projects you might have::
+
+    virtualenv venv
+    source ./venv/bin/activate
+
+.. note::
+
+    You can get out of the virtualenv by either closing the terminal or by
+    calling ``deactivate``.
+
+Then install the required Python packages::
 
     pip install -r requirements.txt
 
