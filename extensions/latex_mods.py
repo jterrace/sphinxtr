@@ -107,42 +107,6 @@ class DocTranslator(BaseTranslator):
             self.body.append('\\\\\n')
         self.table.rowcount += 1
 
-    def depart_literal_block(self, node):
-        code = self.verbatim.rstrip('\n')
-        lang = self.hlsettingstack[-1][0]
-        linenos = code.count('\n') >= self.hlsettingstack[-1][1] - 1
-        highlight_args = node.get('highlight_args', {})
-        if 'language' in node:
-            # code-block directives
-            lang = node['language']
-            highlight_args['force'] = True
-        if 'linenos' in node:
-            linenos = node['linenos']
-        def warner(msg):
-            self.builder.warn(msg, (self.curfilestack[-1], node.line))
-        hlcode = self.highlighter.highlight_block(code, lang, warn=warner,
-                linenos=linenos, **highlight_args)
-        hlcode = hlcode.replace('\$', '$')
-        hlcode = hlcode.replace('\%', '%')
-        # workaround for Unicode issue
-        hlcode = hlcode.replace(u'€', u'@texteuro[]')
-        # must use original Verbatim environment and "tabular" environment
-        if self.table:
-            hlcode = hlcode.replace('\\begin{Verbatim}',
-                                    '\\begin{OriginalVerbatim}')
-            self.table.has_problematic = True
-            self.table.has_verbatim = True
-        # get consistent trailer
-        hlcode = hlcode.rstrip()[:-14] # strip \end{Verbatim}
-        hlcode = hlcode.rstrip() + '\n'
-        hlcode = '\n' + hlcode + '\\end{%sVerbatim}\n' % (self.table and 'Original' or '')
-        hlcode = hlcode.replace('Verbatim', 'lstlisting')
-        begin_bracket = hlcode.find('[')
-        end_bracket = hlcode.find(']')
-        hlcode = hlcode[:begin_bracket] + '[]' + hlcode[end_bracket+1:]
-        self.body.append(hlcode)
-        self.verbatim = None
-
     def visit_figure(self, node):
         ids = ''
         for id in self.next_figure_ids:

@@ -13,7 +13,9 @@ You can make block quotes:
 
 You can make code blocks::
 
-    this is a code block
+    def hello(what="world"):
+        """ an example Python function """
+        return "hello {}".format(what)
 
 Some convenience substitutions are defined in the epilog:
 
