@@ -13,7 +13,16 @@ You can make block quotes:
 
 You can make code blocks::
 
-    this is a code block
+    this is a regular code block
+    no styling information here
+
+You can also make code blocks and get nice per-language syntax highlighting.
+For example, the following block is some Python code:
+
+.. code-block:: python
+
+   import os
+   print os.path.abspath(__file__)
 
 Some convenience substitutions are defined in the epilog:
 
