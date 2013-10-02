@@ -71,7 +71,7 @@
 
 % for code listings
 \usepackage{listings}
-\usepackage{zi4} % change default shitty typewriter font
+\IfFileExists{inconsolata.sty}{\usepackage{inconsolata}}{\usepackage{zi4}}
 \usepackage{color}
 \definecolor{codebg}{RGB}{248,248,248} % mimics html code style
 \definecolor{codeborder}{RGB}{204,204,204}
