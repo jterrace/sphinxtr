@@ -76,7 +76,7 @@ else:
 
 # A string of reStructuredText that will be included at the end of
 # every source file that is read.
-rst_epilog = open(os.path.join(CURDIR, 'epilog.rst'), 'r').read()
+rst_epilog = open(os.path.join(CURDIR, 'epilog.rst'),'r').read().decode('utf8')
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
