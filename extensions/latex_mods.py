@@ -19,7 +19,10 @@ sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('\usepackage{s
 BaseTranslator = sphinx.writers.latex.LaTeXTranslator
 
 class DocTranslator(BaseTranslator):
-
+    
+    def __init__(self, *args, **kwargs):
+        BaseTranslator.__init__(self, *args, **kwargs)
+        self.verbatim = None
     def visit_caption(self, node):
         caption_idx = node.parent.index(node)
         if caption_idx > 0:
