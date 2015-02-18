@@ -33,18 +33,18 @@ def doctree_resolved(app, doctree, docname):
             refdocname = node['refdocname']
             if refdocname in secnums:
                 secnum = secnums[refdocname]
-                emphnode = node.children[0]
-                textnode = emphnode.children[0]
-                
                 toclist = app.builder.env.tocs[refdocname]
-                anchorname = None
-                for refnode in toclist.traverse(nodes.reference):
-                    if refnode.astext() == textnode.astext():
-                        anchorname = refnode['anchorname']
-                if anchorname is None:
-                    continue
-                linktext = '.'.join(map(str, secnum[anchorname]))
-                node.replace(emphnode, nodes.Text(linktext))
+                for child in node.traverse():
+                    if isinstance(child, nodes.Text):
+                        text = child.astext()
+                        anchorname = None
+                        for refnode in toclist.traverse(nodes.reference):
+                            if refnode.astext() == text:
+                                anchorname = refnode['anchorname']
+                        if anchorname is None:
+                            continue
+                        linktext = '.'.join(map(str, secnum[anchorname]))
+                        child.parent.replace(child, nodes.Text(linktext))
 
 def setup(app):
     app.override_domain(CustomStandardDomain)
