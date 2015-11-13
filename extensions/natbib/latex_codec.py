@@ -18,9 +18,18 @@ D. Eppstein, October 2003.
 """
 
 from __future__ import generators
+
 import codecs
 import re
-from backports import Set
+
+import oldPy
+
+try:
+    from sets import Set
+except ImportError:
+    Set = set
+
+#from backports import Set
 
 def register():
     """Enable encodings of the form 'latex+x' where x describes another encoding.

@@ -87,7 +87,10 @@ The following changes and additions have been made from vanilla Sphinx:
 * A singletext output that builds into a single text file, similar to singlehtml
 * A subfigure environment
 
+Nov. 2015 adapting for Python 2.7
+
 Documents Using sphinxtr
 ========================
 
 * `Jeff Terrace's PhD Thesis <http://www.cs.princeton.edu/~jterrace/thesis/>`_
+

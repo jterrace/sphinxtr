@@ -1,23 +1,23 @@
+import collections
+import os
+import re
+
+import pybtex.backends.plaintext
+import pybtex.style.names.lastfirst
+import pybtex.style.names.plain
 from docutils import nodes, transforms
 from docutils.parsers.rst import directives
-
+from oldPy import OrderedSet
+from pybtex.database.input import bibtex
 from sphinx import addnodes
 from sphinx.domains import Domain, ObjType
 from sphinx.locale import l_, _
 from sphinx.roles import XRefRole
 from sphinx.util.compat import Directive
 
-from pybtex.database.input import bibtex
-import pybtex.style.names.plain
-import pybtex.style.names.lastfirst
-import pybtex.backends.plaintext
-
-import collections
 import latex_codec
-import os
-import re
 
-from backports import OrderedSet
+#from backports import OrderedSet
 
 # fix pybtex bug in some versions
 try:
