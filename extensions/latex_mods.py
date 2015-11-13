@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
 import os
 
-from docutils.io import FileOutput
-from docutils.frontend import OptionParser
-from docutils import nodes
-
 import sphinx.builders.latex
-from sphinx.util.smartypants import educate_quotes_latex
-from sphinx.writers.latex import LaTeXWriter
+import sphinx.writers.latex
+from docutils import nodes
+from docutils.frontend import OptionParser
+from docutils.io import FileOutput
 from sphinx.util.console import bold
 from sphinx.util.osutil import copyfile
+from sphinx.util.smartypants import educate_quotes_latex
 from sphinx.util.texescape import tex_escape_map
-import sphinx.writers.latex
+from sphinx.writers.latex import LaTeXWriter
 
 # remove usepackage for sphinx here, we add it later in the preamble in conf.py
 sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('\usepackage{sphinx}', '')
@@ -23,6 +22,9 @@ class DocTranslator(BaseTranslator):
     def __init__(self, *args, **kwargs):
         BaseTranslator.__init__(self, *args, **kwargs)
         self.verbatim = None
+        self.previous_spanning_row = 0
+        self.previous_spanning_column = 0
+
     def visit_caption(self, node):
         caption_idx = node.parent.index(node)
         if caption_idx > 0:
