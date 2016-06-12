@@ -23,6 +23,9 @@ http://jterrace.github.com/sphinxtr.
 The source code for sphinxtr can be found at:
 https://github.com/jterrace/sphinxtr.
 
+.. image:: https://travis-ci.org/jterrace/sphinxtr.svg?branch=master
+    :target: https://travis-ci.org/jterrace/sphinxtr
+
 Installation
 ============
 
