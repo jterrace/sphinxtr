@@ -19,7 +19,7 @@ sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('\usepackage{s
 BaseTranslator = sphinx.writers.latex.LaTeXTranslator
 
 class DocTranslator(BaseTranslator):
-    
+
     def __init__(self, *args, **kwargs):
         BaseTranslator.__init__(self, *args, **kwargs)
         self.verbatim = None

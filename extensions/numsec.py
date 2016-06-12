@@ -16,14 +16,14 @@ class CustomStandardDomain(sphinx.domains.std.StandardDomain):
                      typ, target, node, contnode):
         res = super(CustomStandardDomain, self).resolve_xref(env, fromdocname, builder,
                                                             typ, target, node, contnode)
-        
+
         if res is None:
             return res
-        
+
         if typ == 'ref' and not node['refexplicit']:
             docname, labelid, sectname = self.data['labels'].get(target, ('','',''))
             res['refdocname'] = docname
-        
+
         return res
 
 def doctree_resolved(app, doctree, docname):
