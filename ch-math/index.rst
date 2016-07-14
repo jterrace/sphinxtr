@@ -10,9 +10,9 @@ Math uses latex math syntax:
 
     A^{''}_c =
     \sqrt[3]{
-    (\frac{L^2_c}{\sum{L^2}})
-    (\frac{A_c}{\sum{A}})
-    (\frac{A'_c}{\sum{A'}})
+    \left(\frac{L^2_c}{\sum{L^2}}\right)
+    \left(\frac{A_c}{\sum{A}}\right)
+    \left(\frac{A'_c}{\sum{A'}}\right)
     } \cdot T
 
 Equations can have labels which you can reference |nbsp| :eq:`eq-cc-err-stop`.
