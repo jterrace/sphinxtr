@@ -1,8 +1,15 @@
+from collections import OrderedDict
+
 from docutils import nodes
 from sphinx.roles import XRefRole
+
 import figtable
 import subfig
-from backports import OrderedDict, OrderedSet
+from oldPy import OrderedSet
+
+
+#from collections import OrderedDict, OrderedSet
+#from backports import OrderedDict, OrderedSet
 
 # Element classes
 
