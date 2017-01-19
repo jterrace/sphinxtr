@@ -1,9 +1,17 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{puthesis}
-         [2008/05/02 v1.4 Princeton University Thesis class]
+         [2015/11/02 v1.4 Inburex Phitec Report class]
 \RequirePackage{setspace}
 \RequirePackage{ccicons}
 \RequirePackage{ifthen}
+\RequirePackage{float}
+\RequirePackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{etoolbox}
+\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
+%%%
+\usepackage[scaled]{helvet}
+\renewcommand*{\familydefault}{\sfdefault}
 \newcounter{subyear}
 \setcounter{subyear}{\number\year}
 \def\submitted#1{\gdef\@submitted{#1}}
@@ -16,7 +24,7 @@
 \def\adviser#1{\gdef\@adviser{#1}}
 \long\def\@abstract{\@latex@error{No \noexpand\abstract given}\@ehc}
 \newcommand*{\frontmatter}{
-  \pagenumbering{roman}
+  %%%\pagenumbering{roman}
   }
 \newcommand*{\mainmatter}{\pagenumbering{arabic}}
 \newcommand*{\makelot}{}
@@ -52,80 +60,66 @@
 %%   However, that is not compatible with package 'hyperref'. \tableofcontents needs
 %%   to be declared from within the document itself. 
 \newcommand*{\makefrontmatter}{
+\pagestyle{fancy}
+%%% Kopf und Fusszeilen
+\fancyhead[R]{ }
+\fancyhead[L]{ }
+\fancyhead[C]{\includegraphics[width=0.98\textwidth]{Kopfzeile_neu.png}}
+\fancyfoot[C]{Laborbericht TL/10716/16}
+\fancyfoot[R]{\thepage\  von \pageref{LastPage}}
+\fancypagestyle{meinstyle}{\renewcommand{\headrulewidth}{0pt}\fancyfoot[C]{}\fancyfoot[R]{}} 
 \bodyspacing
-\frontmatter\maketitlepage\makecopyrightpage\makeabstract
-\makeacknowledgements\makededication\maketoc
-\makelot\clearpage\makelof\clearpage\makelos
-\clearpage\mainmatter
+\let\ps@plain\ps@fancy
+\fancyfoot[C]{}\fancyfoot[R]{}
+\frontmatter\maketitlepage\makeabstract
+\maketoc\clearpage\makelof\clearpage\makelos
+\fancyfoot[C]{Laborbericht TL/10716/16}
+\fancyfoot[R]{\thepage\  von \pageref{LastPage}}
+\clearpage
+\mainmatter
 }
 \def\@submitted{\@submittedmonth~\@submittedyear}
-\def\@dept{Mathematics}
-\def\@deptpref{Department of}
+\def\@dept{Labor}
+\def\@deptpref{Abteilung}
 \def\departmentprefix#1{\gdef\@deptpref{#1}}
 \def\department#1{\gdef\@dept{#1}}
 \long\def\acknowledgements#1{\gdef\@acknowledgements{#1}}
 \def\dedication#1{\gdef\@dedication{#1}}
+
 \newcommand{\maketitlepage}{{
-  \thispagestyle{empty}
+  \thispagestyle{meinstyle}
   \sc
-  \vspace*{0in}
-  \begin{center}
-    \LARGE \@title
-  \end{center}
-  \vspace{.6in}
-  \extravspace{.6in}
-  \begin{center}
-    \@author
-  \end{center}
-  \vspace{.6in}
-  \extravspace{.6in}
-  \begin{center}
-    A Dissertation \\
-    Presented to the Faculty \\
-    of Princeton University \\
-    in Candidacy for the Degree \\
-    of Doctor of Philosophy
-  \end{center}
-  \vspace{.3in}
-  \extravspace{.3in}
-  \begin{center}
-    Recommended for Acceptance \\
-    by the \@deptpref \\
-    \@dept \\
-    Adviser: \@adviser
-  \end{center}
-  \vspace{.3in}
-  \extravspace{.3in}
-  \begin{center}
-    \@submitted
-  \end{center}
-  \clearpage
+  \vspace*{1.5in}
+  Leere Seite
+
   }}
 \newcommand*{\makecopyrightpage}{
-  \thispagestyle{empty}
+  \thispagestyle{meinstyle}
   \vspace*{0in}
   \begin{center}
-    \copyright\ Copyright by \@author, \@copyrightyear. All rights reserved. \\
-    \vspace{1in}
-    \begin{minipage}[c]{0.2\linewidth}
-      \hfill {\Huge \ccLogo~\ccAttribution}
-    \end{minipage}
+    \copyright\ Verfasst von \@author, \@copyrightyear. \\
     \hspace{0.1cm}
     \begin{minipage}[c]{0.7\linewidth}
-      This work is licensed under a Creative Commons Attribution-3.0 United States License. \\
-      \url{http://creativecommons.org/licenses/by/3.0/us/}
+      Inburexlogo \\
     \end{minipage}
   \end{center}
   \clearpage}
 \newcommand*{\makeabstract}{
+  \thispagestyle{meinstyle}
   \newpage
-  \addcontentsline{toc}{section}{Abstract}
+  \thispagestyle{meinstyle}
+  \addcontentsline{toc}{section}{Titelseite}
   \begin{center}
-  \Large \textbf{Abstract}
+  \Large \textbf{Hinweis}
   \end{center}
   \@abstract
+  \\
+  \\
+  \\
+  \\
   \clearpage
   }
+  
 \def\makeacknowledgements{
   \ifx\@acknowledgements\undefined
   \else
@@ -137,7 +131,7 @@
 
     \addcontentsline{toc}{section}{Acknowledgements}
     \begin{center}
-      \Large \textbf{Acknowledgements}
+      \Large \textbf{Abk\"urzungsverzeichnis}
     \end{center}
     \@acknowledgements
     \clearpage
@@ -159,18 +153,18 @@
     \phantomsection
   \else
   \fi
-  \addcontentsline{toc}{section}{List of Tables}\listoftables}}
-\DeclareOption{lof}{\renewcommand*{\makelof}{
+  \addcontentsline{toc}{section}{Tabellenverzeichnis}\listoftables}}
+\DeclareOption{lof}{\renewcommand*{\makelof}{\thispagestyle{meinstyle}
   \ifdefined\phantomsection
     % makes hyperref recognize this section properly for pdf links
     \phantomsection
   \else
   \fi
-  \addcontentsline{toc}{section}{List of Figures}\listoffigures}}
+  \addcontentsline{toc}{section}{Grafikverzeichnis}\listoffigures}}
 \DeclareOption{los}{
   \renewcommand*{\makelos}{
     \RequirePackage{losymbol}
-    \section*{List of Symbols\@mkboth {LIST OF SYMBOLS}{LIST OF SYMBOLS}}
+    \section*{List of Symbols\@mkboth {Symbolverzeichnis}{LIST OF SYMBOLS}}
     \@starttoc{los}
   \ifdefined\phantomsection
     % makes hyperref recognize this section properly for pdf links
@@ -205,14 +199,14 @@
     {\PassOptionsToClass{twoside}{report}}
 
 %% Not necessary to specify the point size - we inherit it from above
-%% \LoadClass[12pt]{report}
+%% \LoadClass[11pt]{report}
 \LoadClass{report}
 \ifthenelse{\boolean{@myopt@oneside}}
     {
-\setlength{\oddsidemargin}{.5in}   %{.4375in}
-\setlength{\evensidemargin}{.5in} %{.4375in}
+\setlength{\oddsidemargin}{.3in}   %{.4375in}
+\setlength{\evensidemargin}{.3in} %{.4375in}
 }{
-\setlength{\oddsidemargin}{.5in}   %{.4375in}
+\setlength{\oddsidemargin}{.3in}   %{.4375in}
 \setlength{\evensidemargin}{0in} %{.4375in}
 }
 \setlength{\topmargin}{-.5in}  %{-.5625in}
@@ -226,7 +220,7 @@
 
 %%% try to avoid overfull lines by limiting how far it is okay to exceed the margins
 %%% http://www.tex.ac.uk/cgi-bin/texfaq2html?label=overfull
-\setlength{\emergencystretch}{2em}
+\setlength{\emergencystretch}{3em}
 
 \long\def\abstract#1{\gdef\@abstract{#1}}
 %% 'begincmd' no longer used -- insert \makefrontmatter in the document instead. See above. 

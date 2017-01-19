@@ -206,7 +206,7 @@ class CustomLaTeXBuilder(sphinx.builders.latex.LaTeXBuilder):
         sphinx.writers.latex.BEGIN_DOC = ''
 
         # output these as include files
-        for docname in ['abstract', 'dedication', 'acknowledgements']:
+        for docname in ['abstract', 'dedication', 'Abverz']:
             destination = FileOutput(
                     destination_path=os.path.join(self.outdir, '%s.inc' % docname),
                     encoding='utf-8')

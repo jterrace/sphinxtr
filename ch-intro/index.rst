@@ -17,10 +17,7 @@ support all of the needs of a thesis writer. Many of the patches are not
 appropriate for contributing directly to the upstream Sphinx repository, so
 this is instead a separate project.
 
-This sphinxtr output is available in several formats at:
-http://jterrace.github.com/sphinxtr.
-
-The source code for sphinxtr can be found at:
+The orginal source code for sphinxtr can be found at:
 https://github.com/jterrace/sphinxtr.
 
 Installation
@@ -75,6 +72,9 @@ Changes
 
 The following changes and additions have been made from vanilla Sphinx:
 
+* 2017 Start on the python3.5/sphinx 1.4.3 version
+* 2016 working Version(this version)
+
 * A cross-format bibtex bibliography based on sphinx-natbib
 * Tables that can go inside figures
 * Changed table formatting to look pretty, like booktabs
@@ -87,9 +87,4 @@ The following changes and additions have been made from vanilla Sphinx:
 * A singletext output that builds into a single text file, similar to singlehtml
 * A subfigure environment
 * Nov. 2015 adapting for Python 2.7
-
-Documents Using sphinxtr
-========================
-
-* `Jeff Terrace's PhD Thesis <http://www.cs.princeton.edu/~jterrace/thesis/>`_
 

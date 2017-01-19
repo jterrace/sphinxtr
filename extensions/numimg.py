@@ -1,24 +1,19 @@
 ##
-## @file    numfig.py
+## @file    numimg.py
 ##
-## @brief   For numbering figures in Sphinx
+## @brief   For numbering images in Sphinx
 ##
 ## @version $Id$
 ##
-## Started from https://bitbucket.org/arjones6/sphinx-numfig/wiki/Home
+## Started from https://bitbucket.org/arjones6/sphinx-numimg/wiki/Home
 ##
 ## Copyright &copy; 2005-2012, Tech-X Corporation, Boulder, CO
 ## Free for any use whatsoever.
 ##
 
-from docutils import nodes
 from docutils.nodes \
-  import figure, caption, Text, reference, raw, SkipNode
+  import image, caption, Text, reference, raw, SkipNode
 from sphinx.roles import XRefRole
-
-import figtable
-import subfig
-
 
 #
 # Element classes
@@ -76,30 +71,28 @@ def html_visit_num_ref(self, node):
 def html_depart_num_ref(self, node):
   pass
 
-def compute_numfig_fignums(app, doctree):
-# Generate figure numbers for each figure
+def compute_numimg_imgnums(app, doctree):
+# Generate image numbers for each image
   env = app.builder.env
   i = getattr(env, 'i', 1)
-  figids = getattr(env, 'figids', {})
-  figid_docname_map = getattr(env, 'figid_docname_map', {})
-  for figure_info in doctree.traverse(lambda n: isinstance(n, figure) or \
-                                                      isinstance(n, subfig.subfigend) or \
-                                                      isinstance(n, figtable.figtable)):
-    if app.builder.name != 'latex' and app.config.numfig_number_figures:
-      for cap in figure_info.traverse(caption):
-        cap[0] = nodes.strong('',Text("%s %d: %s" % \
-          (app.config.numfig_figure_caption_prefix, i, cap[0])))
-    for id in figure_info['ids']:
-      figids[id] = i
-      figid_docname_map[id] = env.docname
+  numids = getattr(env, 'numids', {})
+  numid_docname_map = getattr(env, 'numid_docname_map', {})
+  for image_info in doctree.traverse(image):
+    if app.builder.name != 'latex' and app.config.numimg_number_images:
+      for cap in image_info.traverse(caption):
+        cap[0] = Text("%s %d: %s" % \
+          (app.config.numimg_image_caption_prefix, i, cap[0]))
+    for id in image_info['ids']:
+      numids[id] = i
+      numid_docname_map[id] = env.docname
     i += 1
-  env.figid_docname_map = figid_docname_map
+  env.numid_docname_map = numid_docname_map
   env.i = i
-  env.figids = figids
+  env.numids = numids
 
-def insert_numfig_links(app, doctree, docname):
-# Replace numfig nodes with links
-  figids = app.builder.env.figids
+def insert_numimg_links(app, doctree, docname):
+# Replace numimg nodes with links
+  numids = app.builder.env.numids
   if app.builder.name != 'latex':
     for ref_info in doctree.traverse(num_ref):
 
@@ -110,23 +103,23 @@ def insert_numfig_links(app, doctree, docname):
         labelfmt = '%d'
         target = ref_info['reftarget']
 
-      if target not in figids:
+      if target not in numids:
         continue
 
       if app.builder.name == 'html':
-        target_doc = app.builder.env.figid_docname_map[target]
+        target_doc = app.builder.env.numid_docname_map[target]
         link = "%s#%s" % (app.builder.get_relative_uri(docname, target_doc),
                  target)
-        html = '<a href="%s">%s</a>' % (link, labelfmt %(figids[target]))
+        html = '<a href="%s">%s</a>' % (link, labelfmt %(numids[target]))
         ref_info.replace_self(raw(html, html, format='html'))
       else:
-        ref_info.replace_self(Text(labelfmt % (figids[target])))
+        ref_info.replace_self(Text(labelfmt % (numids[target])))
 
 def setup(app):
 
 # Are these used?
-  app.add_config_value('numfig_number_figures', True, True)
-  app.add_config_value('numfig_figure_caption_prefix', "Figure", True)
+  app.add_config_value('numimg_number_images', True, True)
+  app.add_config_value('numimg_image_caption_prefix', "Image", True)
 
   app.add_node(page_ref,
     text=(skip_page_ref, None),
@@ -142,6 +135,6 @@ def setup(app):
 
   app.add_role('num', XRefRole(nodeclass=num_ref))
 
-  app.connect('doctree-read', compute_numfig_fignums)
-  app.connect('doctree-resolved', insert_numfig_links)
+  app.connect('doctree-read', compute_numimg_imgnums)
+  app.connect('doctree-resolved', insert_numimg_links)
 

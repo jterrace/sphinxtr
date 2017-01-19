@@ -1,7 +1,8 @@
-\submitted{November 2012}
-\copyrightyear{2012}
-\adviser{Professor John P. Smith}
-\department{Computer Science}
+\submitted{Dezember 2016}
+\copyrightyear{2016}
+\adviser{M. Gosewinkel}
+
+\department{Technisches Labor der Inburex GmbH}
 
 \newcommand{\proquestmode}{}
 
@@ -10,7 +11,7 @@
 }
 
 \acknowledgements{
-\input{acknowledgements.inc}
+\input{Abverz.inc}
 }
 
 \dedication{
