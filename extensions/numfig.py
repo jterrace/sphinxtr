@@ -41,8 +41,21 @@ def skip_num_ref(self, node):
   raise SkipNode
 
 def latex_visit_page_ref(self, node):
-  self.body.append("\\pageref{%s:%s}" % (node['refdoc'], node['reftarget']))
-  raise SkipNode
+    fields = node['reftarget'].split('#')
+
+    if len(fields) > 1:
+        label, target = fields
+    else:
+        label = None
+        target = fields[0]
+
+    if target not in self.builder.env.docnames_by_figname:
+        raise nodes.SkipNode
+    targetdoc = self.builder.env.docnames_by_figname[target]
+
+    ref_link = '%s:%s' % (targetdoc, target)
+    self.body.append("\\pageref{%s}" % ref_link)
+    raise nodes.SkipNode
 
 def latex_visit_num_ref(self, node):
   fields = node['reftarget'].split('#')
