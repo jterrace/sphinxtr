@@ -53,43 +53,54 @@ def doctree_read(app, doctree):
     docname_figs = getattr(env, 'docname_figs', {})
     docnames_by_figname = getattr(env, 'docnames_by_figname', {})
 
-    for figure_info in doctree.traverse(lambda n: isinstance(n, nodes.figure) or \
-                                                  isinstance(n, subfig.subfigend) or \
-                                                  isinstance(n, figtable.figtable)):
+    for figure_info in doctree.traverse(lambda n: isinstance(n, nodes.figure)  \
+                                        or isinstance(n, subfig.subfigend)  \
+                                        or isinstance(n, figtable.figtable)):
+        for figid in figure_info['ids']:
+            if figid.startswith('id'):
+                isint = False
+                try:
+                    isint = int(figid[2:])
+                except ValueError:
+                    isint = False
+                if isint:
+                    continue
 
-        for id in figure_info['ids']:
-            docnames_by_figname[id] = env.docname
-
-            fig_docname = docnames_by_figname[id]
+            fig_docname = docnames_by_figname[figid] = env.docname
             if fig_docname not in docname_figs:
                 docname_figs[fig_docname] = OrderedDict()
 
             if isinstance(figure_info.parent, subfig.subfig):
                 mainid = figure_info.parent['mainfigid']
             else:
-                mainid = id
-
+                mainid = figid
+            # print"   mainid: ", figid, fig_docname, mainid, mainid in docname_figs[fig_docname], isinstance(figure_info.parent, subfig.subfig)
             if mainid not in docname_figs[fig_docname]:
                 docname_figs[fig_docname][mainid] = OrderedSet()
 
             if isinstance(figure_info.parent, subfig.subfig):
-                docname_figs[fig_docname][mainid].add(id)
+                docname_figs[fig_docname][mainid].add(figid)
 
+    # print("=== ", docname_figs.keys(), docname_figs.values())
     env.docnames_by_figname = docnames_by_figname
     env.docname_figs = docname_figs
+    if len(docname_figs.values()) > 3:
+        x = 1/0.0
 
 def doctree_resolved(app, doctree, docname):
     # replace numfig nodes with links
     if app.builder.name in ('html', 'singlehtml', 'epub'):
         env = app.builder.env
-
         docname_figs = getattr(env, 'docname_figs', {})
         docnames_by_figname = env.docnames_by_figname
+
+        # fig_docname = env.docname
 
         figids = getattr(env, 'figids', {})
 
         secnums = []
         fignames_by_secnum = {}
+        # print("DOC TREE RESOLVED ",  env.docname_figs)
         for figdocname, figurelist in env.docname_figs.iteritems():
             if figdocname not in env.toc_secnumbers:
                 continue
@@ -97,6 +108,7 @@ def doctree_resolved(app, doctree, docname):
             secnums.append(secnum)
             fignames_by_secnum[secnum] = figurelist
 
+        # print(" DOC ", figdocname)
         last_secnum = 0
         secnums = sorted(secnums)
         figid = 1
@@ -105,7 +117,7 @@ def doctree_resolved(app, doctree, docname):
                 figid = 1
             for figname, subfigs in fignames_by_secnum[secnum].iteritems():
                 figids[figname] = str(secnum[0]) + '.' + str(figid)
-                for i, subfigname in enumerate(subfigs):
+                for i, subfigname in enumerate(list(subfigs)):
                     subfigid = figids[figname] + chr(ord('a') + i)
                     figids[subfigname] = subfigid
                 figid += 1
@@ -117,9 +129,21 @@ def doctree_resolved(app, doctree, docname):
                                                       isinstance(n, subfig.subfigend) or \
                                                       isinstance(n, figtable.figtable)):
             id = figure_info['ids'][0]
-            fignum = figids[id]
+            fignum = figids.get(id, None)
+            if fignum is None:
+                continue
+
+            # print("NODES ",  figure_info, id, fignum, isinstance(figure_info, subfig.subfigend))
+
             for cap in figure_info.traverse(nodes.caption):
                 cap.insert(1, nodes.Text(" %s" % cap[0]))
+                if  isinstance(figure_info, subfig.subfigend):
+                    # print(" subfig: "  , fignum, figure_info.children)
+                    for subfigname in list(docname_figs[figdocname][id]):
+                        # print( " ::: ", subfigname)
+                        sfig = figids[subfigname]
+                        boldcaption = "(%s)" % sfig
+                        cap[0] = nodes.strong('', boldcaption)
                 if fignum[-1] in map(str, range(10)):
                     boldcaption = "%s %s:" % (app.config.figure_caption_prefix, fignum)
                 else:
