@@ -53,54 +53,54 @@ def doctree_read(app, doctree):
     docname_figs = getattr(env, 'docname_figs', {})
     docnames_by_figname = getattr(env, 'docnames_by_figname', {})
 
-    for figure_info in doctree.traverse(lambda n: isinstance(n, nodes.figure)  \
-                                        or isinstance(n, subfig.subfigend)  \
-                                        or isinstance(n, figtable.figtable)):
-        for figid in figure_info['ids']:
-            if figid.startswith('id'):
-                isint = False
-                try:
-                    isint = int(figid[2:])
-                except ValueError:
-                    isint = False
-                if isint:
-                    continue
+    for figure_info in doctree.traverse(lambda n: isinstance(n, nodes.figure) or \
+                                                  isinstance(n, subfig.subfigend) or \
+                                                  isinstance(n, figtable.figtable)):
 
-            fig_docname = docnames_by_figname[figid] = env.docname
+        for id in figure_info['ids']:
+
+            fig_docname = docnames_by_figname[id] = env.docname
+
             if fig_docname not in docname_figs:
                 docname_figs[fig_docname] = OrderedDict()
 
             if isinstance(figure_info.parent, subfig.subfig):
                 mainid = figure_info.parent['mainfigid']
             else:
-                mainid = figid
-            # print"   mainid: ", figid, fig_docname, mainid, mainid in docname_figs[fig_docname], isinstance(figure_info.parent, subfig.subfig)
+                mainid = id
+
             if mainid not in docname_figs[fig_docname]:
                 docname_figs[fig_docname][mainid] = OrderedSet()
 
             if isinstance(figure_info.parent, subfig.subfig):
-                docname_figs[fig_docname][mainid].add(figid)
+                docname_figs[fig_docname][mainid].add(id)
 
-    # print("=== ", docname_figs.keys(), docname_figs.values())
     env.docnames_by_figname = docnames_by_figname
     env.docname_figs = docname_figs
-    if len(docname_figs.values()) > 3:
-        x = 1/0.0
+
+def figname_is_id(s):
+    "determine if string is 'idX' where X is an integer"
+    if s.startswith('id') and len(s) > 2:
+        isint = False
+        try:
+            isint = int(s[2:]) is not None
+        except ValueError:
+            isint = False
+        return isint
+
 
 def doctree_resolved(app, doctree, docname):
     # replace numfig nodes with links
     if app.builder.name in ('html', 'singlehtml', 'epub'):
         env = app.builder.env
+
         docname_figs = getattr(env, 'docname_figs', {})
         docnames_by_figname = env.docnames_by_figname
-
-        # fig_docname = env.docname
 
         figids = getattr(env, 'figids', {})
 
         secnums = []
         fignames_by_secnum = {}
-        # print("DOC TREE RESOLVED ",  env.docname_figs)
         for figdocname, figurelist in env.docname_figs.iteritems():
             if figdocname not in env.toc_secnumbers:
                 continue
@@ -108,7 +108,6 @@ def doctree_resolved(app, doctree, docname):
             secnums.append(secnum)
             fignames_by_secnum[secnum] = figurelist
 
-        # print(" DOC ", figdocname)
         last_secnum = 0
         secnums = sorted(secnums)
         figid = 1
@@ -116,10 +115,15 @@ def doctree_resolved(app, doctree, docname):
             if secnum[0] != last_secnum:
                 figid = 1
             for figname, subfigs in fignames_by_secnum[secnum].iteritems():
+                if figname_is_id(figname):
+                    continue
                 figids[figname] = str(secnum[0]) + '.' + str(figid)
-                for i, subfigname in enumerate(list(subfigs)):
-                    subfigid = figids[figname] + chr(ord('a') + i)
+                isub = 0
+                for subfigname in subfigs:
+                    subfigid = figids[figname] + chr(ord('a') + isub)
                     figids[subfigname] = subfigid
+                    if not figname_is_id(subfigname):
+                        isub += 1
                 figid += 1
             last_secnum = secnum[0]
 
@@ -128,22 +132,16 @@ def doctree_resolved(app, doctree, docname):
         for figure_info in doctree.traverse(lambda n: isinstance(n, nodes.figure) or \
                                                       isinstance(n, subfig.subfigend) or \
                                                       isinstance(n, figtable.figtable)):
-            id = figure_info['ids'][0]
-            fignum = figids.get(id, None)
-            if fignum is None:
-                continue
 
-            # print("NODES ",  figure_info, id, fignum, isinstance(figure_info, subfig.subfigend))
+
+            try:
+                id = figure_info['ids'][0]
+                fignum = figids[id]
+            except (IndexError, KeyError):
+                continue
 
             for cap in figure_info.traverse(nodes.caption):
                 cap.insert(1, nodes.Text(" %s" % cap[0]))
-                if  isinstance(figure_info, subfig.subfigend):
-                    # print(" subfig: "  , fignum, figure_info.children)
-                    for subfigname in list(docname_figs[figdocname][id]):
-                        # print( " ::: ", subfigname)
-                        sfig = figids[subfigname]
-                        boldcaption = "(%s)" % sfig
-                        cap[0] = nodes.strong('', boldcaption)
                 if fignum[-1] in map(str, range(10)):
                     boldcaption = "%s %s:" % (app.config.figure_caption_prefix, fignum)
                 else:
@@ -168,10 +166,14 @@ def doctree_resolved(app, doctree, docname):
                 if app.builder.name == 'singlehtml':
                     link = "#%s" % target
                 else:
-                    link = "%s#%s" % (app.builder.get_relative_uri(docname, target_doc),
-                                      target)
+                    link = "%s#%s"%(app.builder.get_relative_uri(docname,
+                                                                 target_doc),
+                                    target)
+                if target in figids:
+                    linktext = labelfmt % figids[target]
+                else:
+                    linktext = target
 
-                linktext = labelfmt % figids[target]
 
             html = '<a href="%s">%s</a>' % (link, linktext)
             ref_info.replace_self(nodes.raw(html, html, format='html'))
