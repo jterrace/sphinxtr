@@ -1,11 +1,11 @@
 from docutils import nodes, transforms
+from docutils.parsers.rst import Directive
 from docutils.parsers.rst import directives
 
 from sphinx import addnodes
 from sphinx.domains import Domain, ObjType
 from sphinx.locale import l_, _
 from sphinx.roles import XRefRole
-from sphinx.util.compat import Directive
 
 from pybtex.database.input import bibtex
 import pybtex.style.names.plain

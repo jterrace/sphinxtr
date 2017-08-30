@@ -3,7 +3,8 @@ import sys, os
 # directory relative to this conf file
 CURDIR = os.path.abspath(os.path.dirname(__file__))
 # add custom extensions directory to python path
-sys.path.append(os.path.join(os.path.abspath(os.path.dirname(__file__)), 'extensions'))
+sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname(__file__)), 'extensions'))
+
 
 # import the custom html and latex builders/translators/writers
 import html_mods
@@ -192,7 +193,7 @@ ADDITIONAL_FOOTER = """
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     'papersize': 'letterpaper',
-    
+
     # * gets passed to \documentclass
     # * default options are single sided, double spaced
     #   you can change them with these options:
@@ -201,30 +202,30 @@ latex_elements = {
     # * you might want to omit the list of tables (lot)
     #   if you use figtable without the :nofig: option
     'classoptions': ',english,lof,lot',
-    
+
     # The font size ('10pt', '11pt' or '12pt').
     'pointsize': '12pt',
-    
+
     # Additional stuff for the LaTeX preamble.
     'preamble': ADDITIONAL_PREAMBLE,
-    
+
     # Additional footer
-    'footer': ADDITIONAL_FOOTER,
-    
+    'atendofbody': ADDITIONAL_FOOTER,
+
     # disable font inclusion
     'fontpkg': '',
     'fontenc': '',
-    
+
     # disable fancychp
     'fncychap': '',
-    
+
     # get rid of the sphinx wrapper class file
     'wrapperclass': 'puthesis',
-    
+
     # override maketitle
     'maketitle': '\makefrontmatter',
     'tableofcontents': '',
-    
+
     # disable index printing
     'printindex': '',
 }
