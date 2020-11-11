@@ -93,4 +93,4 @@ The following changes and additions have been made from vanilla Sphinx:
 Documents Using sphinxtr
 ========================
 
-* `Jeff Terrace's PhD Thesis <http://jeffterrace.com/thesis/>`_
+* `Jeff Terrace's PhD Thesis <http://jterrace.github.com/sphinxtr>`_
